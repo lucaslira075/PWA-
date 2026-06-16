@@ -4,7 +4,7 @@ import { Button, Card, Input, Alert, Badge, Modal } from '@components/UI'
 import { useToast } from '@components/Toast'
 import { useAuth, useBarcodeScanner, useAudioFeedback } from '@hooks/index'
 import { apiClient } from '@services/api'
-import { MESSAGES, PENDING_REASONS_LABELS } from '@constants/index'
+import { PENDING_REASONS_LABELS } from '@constants/index'
 import type { Product, PackingSession, PackingItem } from '@appTypes/index';
 
 type ExtendedPackingItem = PackingItem & { isConfirmed: boolean }
@@ -26,7 +26,7 @@ interface PackingUIState {
 export const PackingPage: React.FC = () => {
   const navigate = useNavigate()
   const { user } = useAuth()
-  const { success, error: showError, warning } = useToast()
+  const { success, error: warning } = useToast()
   const { playSound } = useAudioFeedback()
 
   const [state, setState] = useState<PackingUIState>({
